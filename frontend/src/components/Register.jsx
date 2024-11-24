@@ -1,0 +1,294 @@
+import React from "react";
+import { Button, CssBaseline, TextField, Link, Box, Grid, Typography } from "@mui/material";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCircleLeft } from "@fortawesome/free-solid-svg-icons";
+import "./css/Home.css";
+
+function Register() {
+  const MySwal = withReactContent(Swal);
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+
+    if (!data.get("firstName") || !data.get("lastName") || !data.get("email") || !data.get("password")) {
+      MySwal.fire({
+        title: "ล้มเหลว",
+        text: "Please fill in all fields.",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
+      return;
+    }
+
+    MySwal.fire({
+      title: "ต้องการลงทะเบียนใช่หรือไม่?",
+      text: "Do you want to submit the form?",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "ลงทะเบียน",
+      cancelButtonText: "ยกเลิก",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const jsonData = {
+          email: data.get("email"),
+          password: data.get("password"),
+          fname: data.get("firstName"),
+          lname: data.get("lastName"),
+        };
+
+        fetch("http://localhost:3001/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(jsonData),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.status === "ok") {
+              MySwal.fire({
+                title: "ลงทะเบียนสำเร็จ",
+                text: "You have successfully registered.",
+                icon: "success",
+                confirmButtonText: "ยืนยัน",
+              }).then(() => {
+                window.location = "/login";
+              });
+            } else {
+              let message = "Register failed";
+              if (data.message === "Email already exists") {
+                message = "Email already exists. Please use a different email.";
+              } else if (data.message === "Invalid email format") {
+                message = "Invalid email format.";
+              }
+              MySwal.fire({
+                title: "ลงทะเบียนล้มเหลว",
+                text: message,
+                icon: "error",
+                confirmButtonText: "ยืนยัน",
+              });
+            }
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+            MySwal.fire({
+              title: "Error",
+              text: "An error occurred",
+              icon: "error",
+              confirmButtonText: "OK",
+            });
+          });
+      }
+    });
+  };
+
+  return (
+    <div className="Font" style={registerStyle}>
+      <Link href="/home" style={linkStyle}>
+        <FontAwesomeIcon
+          icon={faCircleLeft}
+          style={{
+            color: "rgba(0, 0, 0, 0.3)",
+            padding: "10px",
+            width: "40px",
+            height: "40px",
+          }}
+          onMouseOver={(e) => {
+            e.currentTarget.style.color = "rgba(0, 0, 0, 0.7)";
+          }}
+          onMouseOut={(e) => {
+            e.currentTarget.style.color = "rgba(0, 0, 0, 0.3)";
+          }}
+        />
+        <Typography sx={{ fontFamily: "'Kanit', sans-serif" }}>กลับสู่หน้าแรก</Typography>
+      </Link>
+      <Grid
+        container
+        component="main"
+        sx={{
+          height: "100vh",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <CssBaseline />
+        <Grid
+          item
+          xs={10}
+          sm={8}
+          md={6}
+          lg={3}
+          className="border rounded-5"
+          sx={{
+            backgroundColor: "white",
+            border: "3px solid",
+            borderColor: "secondary.main",
+            borderRadius: "5px",
+          }}
+        >
+          <Box
+            sx={{
+              my: 8,
+              mx: 4,
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <Typography component="h1" variant="h4"  sx={{ fontFamily: "'Kanit', sans-serif" }}>
+              ลงทะเบียนผู้ใช้
+            </Typography>
+            <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="firstName"
+                    name="firstName"
+                    label="ชื่อ"
+                    autoFocus
+                    InputProps={{
+                      sx: {
+                        borderRadius: 5,
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                    InputLabelProps={{
+                      sx: {
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="lastName"
+                    name="lastName"
+                    label="นามสกุล"
+                    InputProps={{
+                      sx: {
+                        borderRadius: 5,
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                    InputLabelProps={{
+                      sx: {
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="email"
+                    name="email"
+                    label="อีเมล"
+                    InputProps={{
+                      sx: {
+                        borderRadius: 5,
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                    InputLabelProps={{
+                      sx: {
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    required
+                    fullWidth
+                    id="password"
+                    type="password"
+                    name="password"
+                    label="รหัสผ่าน"
+                    InputProps={{
+                      sx: {
+                        borderRadius: 5,
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                    InputLabelProps={{
+                      sx: {
+                        fontFamily: "'Kanit', sans-serif",
+                      },
+                    }}
+                  />
+                </Grid>
+              </Grid>
+              <Grid container sx={{ mt: 2, mb: 2, justifyContent: "center" }}>
+                <Button
+                  className="rounded-pill"
+                  type="submit"
+                  variant="contained"
+                  sx={{
+                    width: "50%",
+                    bgcolor: "#4761ff",
+                    fontFamily: "'Kanit', sans-serif",
+                    "&:hover": { bgcolor: "#304ffe" },
+                  }}
+                >
+                  ลงทะเบียน
+                </Button>
+              </Grid>
+              <Grid container justifyContent="flex-end">
+                <Grid item>
+                  <Box display="flex" alignItems="center">
+                    <Typography variant="body2" sx={{ fontFamily: "'Kanit', sans-serif" }}>มีบัญชีอยู่แล้ว?&nbsp;</Typography>
+                    <Link
+                      href="/login"
+                      variant="body2"
+                      sx={{
+                        color: "#4761ff",
+                        textDecoration: "none",
+                        fontWeight: "bold",
+                        fontFamily: "'Kanit', sans-serif",
+                        "&:hover": {
+                          color: "#304ffe",
+                          textDecoration: "underline",
+                        },
+                      }}
+                    >
+                      ลงชื่อเข้าใช้
+                    </Link>
+                  </Box>
+                </Grid>
+              </Grid>
+            </Box>
+          </Box>
+        </Grid>
+      </Grid>
+    </div>
+  );
+}
+export default Register;
+
+const registerStyle = {
+  backgroundImage: "url('http://localhost:3000/images/login-register.jpg')",
+  backgroundSize: "cover",
+  backgroundPosition: "center",
+  height: "100vh",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  position: "relative",
+};
+
+const linkStyle = {
+  position: "absolute",
+  top: 10,
+  left: 10,
+  display: "flex",
+  alignItems: "center",
+  textDecoration: "none",
+};
