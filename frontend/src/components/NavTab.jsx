@@ -4,6 +4,8 @@ import { Button, Container, Nav, Navbar, NavDropdown, Modal, Form, DropdownButto
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHouse, faComments, faUser, faTrophy, faCircleQuestion, faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 function NavTab() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -135,46 +137,68 @@ function NavTab() {
   return (
     <div className="NavTab">
       {/* ---------------------------------- NAVBAR ---------------------------------- */}
-      <Navbar expand="lg" className="bg-body-tertiary fixed-top shadow-sm">
-        <Container fluid className="container-nav">
-          <Navbar.Brand className="ms-5">
-            <img
-              src="http://localhost:3000/images/image__firstaid__logo.png"
-              alt="Logo"
-              style={{
-                width: "50px",
-                margin: "0px -5px 2px 0px",
-              }}
-            />
+      <Navbar expand="lg" className="fixed-top" style={{ backgroundColor: "black" }}>
+        <Container className="container-nav">
+          <Navbar.Brand>
+            <a href="/home" style={{ textDecoration: "none" }}>
+              <img
+                src="http://localhost:3000/images/logo.png"
+                alt="Logo"
+                style={{
+                  height: "42px",
+                  width: "auto",
+                }}
+              />
+            </a>
           </Navbar.Brand>
-          <Navbar.Brand>Brand</Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Nav.Link href="/home" className="Nav-Link mx-4">
-                home
+                <FontAwesomeIcon icon={faHouse} style={{ width: "24px", height: "24px", color: "white" }} />
               </Nav.Link>
-              <Nav.Link href="/firstaid" className="Nav-Link mx-4">
-                about
+              <Nav.Link href="/community" className="Nav-Link mx-4">
+                <FontAwesomeIcon icon={faComments} style={{ width: "24px", height: "24px", color: "white" }} />
               </Nav.Link>
-              <Nav.Link href="/article" className="Nav-Link mx-4">
-                contact
+              <Nav.Link href="/party" className="Nav-Link mx-4">
+                <FontAwesomeIcon icon={faUser} style={{ width: "24px", height: "24px", color: "white" }} />
+              </Nav.Link>
+              <Nav.Link href="/tournament" className="Nav-Link mx-4">
+                <FontAwesomeIcon icon={faTrophy} style={{ width: "24px", height: "24px", color: "white" }} />
+              </Nav.Link>
+              <Nav.Link href="/quiz" className="Nav-Link mx-4">
+                <FontAwesomeIcon icon={faCircleQuestion} style={{ width: "24px", height: "24px", color: "white" }} />
               </Nav.Link>
               {user.role_id === 2 && (
                 <Nav.Link href="/admin" className="Nav-Link mx-4">
-                  admin
+                  <FontAwesomeIcon icon={faUserTie} style={{ width: "24px", height: "24px", color: "white" }} />
                 </Nav.Link>
               )}
             </Nav>
-            <Navbar.Brand className="ms-5" style={{ fontSize: "16px" }}>
-              {user.fname} {user.lname}
-            </Navbar.Brand>
             {isLoggedIn ? (
-              <NavDropdown title={<AccountCircleIcon style={{ fontSize: "2rem" }} />} id="navbarScrollingDropdown" className="Nav-Link me-auto mx-2 my-2 my-lg-0">
-              <NavDropdown.Item onClick={handleEdit}>edit</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item onClick={handleLogout}>logout</NavDropdown.Item>
-            </NavDropdown>
+              <Dropdown align="end" className="user-profile-dropdown">
+                <Dropdown.Toggle variant="link" id="dropdown-basic" className="user-profile-toggle">
+                  <div className="user-profile">
+                    <div className="avatar">
+                      <img
+                        src="http://localhost:3000/images/profile-1.jpg"
+                        alt="User Avatar"
+                        style={{
+                          height: "40px",
+                          width: "40px",
+                        }}
+                      />
+                    </div>
+                    <div className="username">
+                      {user.fname} {user.lname}
+                    </div>
+                  </div>
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={handleEdit}>edit</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             ) : (
               <Button href="/login" className="w3-button w3-padding-large w3-white w3-border me-auto mx-2 my-2 my-lg-0 Logout-Button">
                 login

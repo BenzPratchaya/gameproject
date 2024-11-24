@@ -1,3 +1,72 @@
 .NavTab {
   font-family: "Kanit", sans-serif;
 }
+
+/* สไตล์สำหรับโปรไฟล์ */
+.user-profile {
+  display: flex;
+  align-items: center;
+  background-color: #282828; /* สีพื้นหลัง */
+  border-radius: 20px; /* ขอบมน */
+  padding: 0px 16px 0px 0px; /* ระยะ padding */
+  gap: 10px; /* ระยะห่างระหว่างรูปโปรไฟล์และชื่อ */
+  color: white;
+  font-size: 14px;
+  font-family: 'Arial', sans-serif;
+  cursor: pointer; /* แสดง cursor เมื่อเลื่อนเมาส์ */
+}
+
+.user-profile:hover {
+  background-color: #404040; /* สีพื้นหลังเมื่อ hover */
+}
+
+/* สไตล์สำหรับรูปโปรไฟล์ */
+.avatar img {
+  width: 40px; /* ขนาดรูปภาพ */
+  height: 40px;
+  border-radius: 50%; /* ทำให้รูปเป็นวงกลม */
+}
+
+/* สไตล์สำหรับชื่อ */
+.username {
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ปรับแต่งปุ่ม Toggle เพื่อซ่อนลูกศร */
+.user-profile-toggle {
+  display: flex;
+  align-items: center;
+  border: none;
+  background: none;
+  padding: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.user-profile-toggle::after {
+  display: none; /* ซ่อนลูกศรที่เป็นสัญลักษณ์ Dropdown */
+}
+
+.user-profile-toggle:focus {
+  box-shadow: none;
+}
+
+/* Dropdown เมนู */
+.user-profile-dropdown .dropdown-menu {
+  background-color: #282828; /* พื้นหลัง Dropdown */
+  border: none;
+  border-radius: 10px;
+}
+
+.user-profile-dropdown .dropdown-item {
+  color: white;
+  padding: 10px 20px;
+  transition: background 0.2s;
+}
+
+.user-profile-dropdown .dropdown-item:hover {
+  background-color: #404040; /* สีพื้นหลังของตัวเลือกเมื่อ hover */
+}
