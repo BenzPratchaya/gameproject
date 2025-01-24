@@ -1,0 +1,61 @@
+.footer {
+    background-color: #231F20;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: flex-start; /* จัดชิดซ้าย */
+    align-items: center; /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+    gap: 60px; /* ระยะห่างระหว่าง logo กับ nav */
+    padding: 10px 0; /* ลดช่องว่างรอบๆ */
+  }
+
+  .footer-logo {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: limegreen;
+  }
+  
+  .footer-nav a {
+    margin: 0 20px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between; /* จัดตำแหน่งให้สองฝั่ง */
+    align-items: center; /* จัดให้อยู่ตรงกลางแนวตั้ง */
+    padding-top: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap; /* สำหรับหน้าจอเล็ก */
+    text-align: center;
+  }  
+  
+  .footer-terms a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .footer-bar {
+    height: 20px; /* ความสูงของแถบ */
+    width: 30%; /* กำหนดความกว้างให้แค่ฝั่งขวา */
+    margin-left: auto; /* ดันแถบไปทางขวา */
+    background: repeating-linear-gradient(
+      135deg, /* องศาของลายเส้น */
+      #231F20 0, /* เริ่มด้วยสีดำ */
+      #231F20 12px, /* ความกว้างของสีดำ */
+      #D5F87C 10px, /* เริ่มสีเขียว */
+      #D5F87C 22px /* ความกว้างของสีเขียว */
+    );
+  }
+  
