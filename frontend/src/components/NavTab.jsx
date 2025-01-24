@@ -153,7 +153,7 @@ function NavTab() {
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
-            <Nav className="ms-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
+            <Nav className="mx-auto my-2 my-lg-0" style={{ maxHeight: "100px" }} navbarScroll>
               <Nav.Link href="/home" className="Nav-Link mx-4">
                 <FontAwesomeIcon icon={faHouse} style={{ width: "24px", height: "24px", color: "white" }} />
               </Nav.Link>
