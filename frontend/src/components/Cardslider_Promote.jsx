@@ -8,14 +8,14 @@ const cards = [
   { id: 2, imageUrl: "http://localhost:3000/images/Banner-2.jpg" },
 ];
 
-const Cardslider2 = () => {
+const Cardslider_Promote = () => {
   const settings = {
     infinite: true, // วนซ้ำ
     speed: 500,
     slidesToShow: 1, // จำนวนการ์ดที่แสดงในหนึ่งหน้า
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2000, // ความเร็วในการเลื่อน (ms)
+    autoplaySpeed: 5000, // ความเร็วในการเลื่อน (ms)
   };
 
   return (
@@ -43,4 +43,4 @@ const Cardslider2 = () => {
   );
 };
 
-export default Cardslider2;
+export default Cardslider_Promote;

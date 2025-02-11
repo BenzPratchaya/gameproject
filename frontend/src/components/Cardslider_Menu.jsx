@@ -12,7 +12,7 @@ const cards = [
   { id: 6, title: "คอมมิวนิตี้", imageUrl: "http://localhost:3000/images/Banner-Webboard.jpg" },
 ];
 
-const Cardslider1 = () => {
+const Cardslider_Menu = () => {
   const [currentSlide, setCurrentSlide] = React.useState(0);
 
   const settings = {
@@ -64,4 +64,4 @@ const Cardslider1 = () => {
   );
 };
 
-export default Cardslider1;
+export default Cardslider_Menu;

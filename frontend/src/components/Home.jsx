@@ -3,8 +3,8 @@ import { Container } from "react-bootstrap";
 import "./css/Home.css";
 import NavTab from "./NavTab";
 import Footer from "./Footer.jsx";
-import Cardslider1 from "./Cardslider1.jsx";
-import Cardslider2 from "./Cardslider2.jsx";
+import Cardslider_Menu from "./Cardslider_Menu.jsx";
+import Cardslider_Promote from "./Cardslider_Promote.jsx";
 
 function Home() {
   return (
@@ -12,10 +12,10 @@ function Home() {
       <NavTab />
       <Container>
         <section className="card" style={{ marginTop: "100px", backgroundColor: "#1d1e20" }}>
-          <Cardslider1 />
+          <Cardslider_Menu />
         </section>
         <section className="card" style={{ marginTop: "100px", backgroundColor: "#1d1e20" }}>
-          <Cardslider2 />
+          <Cardslider_Promote />
         </section>
       </Container>
       <br/>
