@@ -35,7 +35,7 @@ const UserProfile = () => {
         setLoading(false);
       });
   }, []); // เพิ่ม [] เพื่อให้ useEffect รันแค่ครั้งเดียว;
-  
+
   return (
     <>
       <NavTab />
@@ -51,16 +51,21 @@ const UserProfile = () => {
         <Container className="mt-5">
           <div style={{ display: "flex" }}>
             <h3 className="d-flex justify-content-center" style={{ fontSize: "36px" }}>
-            {user.fname} {user.lname}
+              {user.fname} {user.lname}
             </h3>
             <div className="d-flex justify-content-center gap-2 mx-3" style={{ height: "44px" }}>
-              <Button variant="primary" style={{ width: "65px" }}>
+              <Button className="d-flex align-items-center justify-content-center" variant="primary" style={{ width: "65px" }}>
                 URL
               </Button>
-              <Button variant="success" style={{ width: "145px" }}>
+              <Button className="d-flex align-items-center justify-content-center" variant="success" style={{ width: "145px" }}>
                 ยืนยันบัญชี
               </Button>
-              <Button variant="outline-light" style={{ width: "145px" }}>
+              <Button
+                href="/settings"
+                variant="outline-light"
+                className="d-flex align-items-center justify-content-center"
+                style={{ width: "145px", height: "44px" }}
+              >
                 แก้ไขโปรไฟล์
               </Button>
             </div>
