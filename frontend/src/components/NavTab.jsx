@@ -181,7 +181,7 @@ function NavTab() {
                   <div className="user-profile">
                     <div className="avatar">
                       <img
-                        src="http://localhost:3000/images/profile-1.jpg"
+                        src="http://localhost:3000/images/profile_avatar.jpg"
                         alt="User Avatar"
                         style={{
                           height: "40px",
@@ -195,8 +195,8 @@ function NavTab() {
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleEdit}>edit</Dropdown.Item>
-                  <Dropdown.Item onClick={handleLogout}>logout</Dropdown.Item>
+                  <Dropdown.Item onClick={handleEdit}>โปรไฟล์</Dropdown.Item>
+                  <Dropdown.Item onClick={handleLogout}>ออกจากระบบ</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
             ) : (
