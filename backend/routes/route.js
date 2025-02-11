@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const UserController = require("../controllers/UserController");
+const UserRankController = require("../controllers/UserRankController");
+const GameController = require("../controllers/GameController");
 
 const multer = require("multer");
 const path = require("path");
@@ -40,8 +42,17 @@ const upload = multer({
 router.get("/users", UserController.getUserList);
 router.get("/user/:id", UserController.getUserById);
 router.get("/users/role_id/:role_id", UserController.getUserByRoleId);
-router.get("/users/countmonth", UserController.getUserCountMonth);
 router.put("/user/update/:id", UserController.updateUser);
 router.delete("/user/delete/:id", UserController.deleteUser);
+
+router.get("/user_ranks", UserRankController.getUserRankList);
+router.post("/user_ranks/create", UserRankController.createUserRank);
+router.put("/user_ranks/update/:id", UserRankController.updateUserRank);
+router.delete("/user_ranks/delete/:id", UserRankController.deleteUserRank);
+
+router.get("/games", GameController.getGameList);
+router.post("/games/create", GameController.createGame);
+router.put("/games/update/:id", GameController.updateGame);
+router.delete("/games/delete/:id", GameController.deleteGame);
 
 module.exports = router;

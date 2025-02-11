@@ -31,8 +31,8 @@ router.post("/register", jsonParser, function (req, res, next) {
           return;
         }
         db.query(
-          "INSERT INTO users (email, password, fname, lname, role_id, created_date) VALUES (?,?,?,?,1,?)",
-          [req.body.email, hash, req.body.fname, req.body.lname, new Date()],
+          "INSERT INTO users (email, password, fname, lname, role_id, created_date, updated_date) VALUES (?,?,?,?,1,?,?)",
+          [req.body.email, hash, req.body.fname, req.body.lname, new Date(), new Date()],
           function (err, results) {
             if (err) {
               res.json({ status: "error", message: err });
@@ -64,8 +64,8 @@ router.post("/register/admin", jsonParser, function (req, res, next) {
           return;
         }
         db.query(
-          "INSERT INTO users (email, password, fname, lname, role_id, created_date) VALUES (?,?,?,?,2,?)",
-          [req.body.email, hash, req.body.fname, req.body.lname, new Date()],
+          "INSERT INTO users (email, password, fname, lname, role_id, created_date, updated_date) VALUES (?,?,?,?,2,?,?)",
+          [req.body.email, hash, req.body.fname, req.body.lname, new Date(), new Date()],
           function (err, results) {
             if (err) {
               res.json({ status: "error", message: err });
