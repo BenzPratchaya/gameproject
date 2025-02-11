@@ -41,18 +41,7 @@ exports.getUserByRoleId = (req, res) => {
   });
 };
 
-// router.get("/users/countmonth", (req, res) => {
-exports.getUserCountMonth = (req, res) => {
-  db.query("SELECT DATE_FORMAT(created_date, '%m/%Y') AS date, COUNT(id) AS count FROM users GROUP BY date;", (err, result) => {
-    if (err) {
-      console.log(err);
-    } else {
-      res.send(result);
-    }
-  });
-};
-
-// router.put("/user/upda/:id", (req, res) => {
+// router.put("/user/update/:id", (req, res) => {
 exports.updateUser = (req, res) => {
   const { id, fname, lname } = req.body;
   db.query("UPDATE users SET fname = ?, lname = ? WHERE id = ?", [fname, lname, id], (err, result) => {
