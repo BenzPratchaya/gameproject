@@ -195,7 +195,8 @@ function NavTab() {
                   </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <Dropdown.Item onClick={handleEdit}>โปรไฟล์</Dropdown.Item>
+                  {/* <Dropdown.Item onClick={handleEdit}>โปรไฟล์</Dropdown.Item> */}
+                  <Dropdown.Item href="/users">โปรไฟล์</Dropdown.Item>
                   <Dropdown.Item onClick={handleLogout}>ออกจากระบบ</Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>

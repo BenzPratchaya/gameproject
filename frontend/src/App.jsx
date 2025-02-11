@@ -6,6 +6,7 @@ import Register from "./components/Register.jsx";
 import NavTab from "./components/NavTab.jsx";
 import Footer from "./components/Footer.jsx";
 import UserProfile from "./components/UserProfile.jsx";
+import UserSetting from "./components/UserSetting.jsx";
 
 function App() {
   const [user, setUser] = useState([]);
@@ -46,6 +47,7 @@ function App() {
         <Route path="/navtab" element={<NavTab />} />
         <Route path="/footer" element={<Footer />} />
         <Route path="/users" element={<UserProfile />} />
+        <Route path="/settings" element={<UserSetting />} />
       </Routes>
     </div>
   );
