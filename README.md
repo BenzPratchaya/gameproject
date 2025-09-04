@@ -1,3 +1,3 @@
 # GameProject Not Finished
-Backend NodeJS Express
-Frontend React
+* Backend NodeJS Express
+* Frontend React
